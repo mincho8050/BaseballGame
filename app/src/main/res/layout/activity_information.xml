@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/info_image"
+        style="@style/ImageStyle"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/ic_baseball_info" />
+
+    <TextView
+        android:id="@+id/info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        style="@style/FontStyle"
+        android:text="게임 규칙" />
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/bmjua"
+        android:textColor="@android:color/black"
+        android:text="1) 게임 시작 버튼을 누르고 게임을 시작 합니다.
+        \n2) 맞출 3자리 번호를 생성합니다.(0~9까지)
+        \n3) 3자리 번호를 맞추는데 0은 앞자리에 올 수 없습니다.
+        \n4) 숫자는 맞는데 자릿수가 다르면 B(ball) ,
+        \n\t\t숫자와 자릿수가 다 맞으면 S(strike) ,
+        \n\t\t숫자,자릿수 모두 다 틀리면 O(out) 입니다.
+        \n5) 이렇게 힌트를 가지고 숫자를 맞추면 됩니다!" />
+
+</LinearLayout>

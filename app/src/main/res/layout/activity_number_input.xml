@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NumberInput">
+
+
+    <TextView
+        android:id="@+id/input_title"
+        style="@style/FontStyle"
+        android:layout_marginTop="100dp"
+        android:text="번호를 입력하세요" />
+
+    <EditText
+        android:id="@+id/input_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="8"
+        android:hint="3자리 번호입력"
+        android:maxLength="3"
+        android:layout_gravity="center"
+        android:textCursorDrawable="@null"
+        android:layout_marginTop="50dp"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/input_result_btn"
+        style="@style/BtnStyle"
+        android:layout_marginTop="20dp"
+        android:text="결과 확인" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/input_layout">
+
+            <TextView
+                android:id="@+id/input_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

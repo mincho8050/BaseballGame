@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NumberCreation">
+
+    <ImageView
+        android:id="@+id/num_image"
+        style="@style/ImageStyle"
+        android:layout_marginTop="140dp"
+        app:srcCompat="@drawable/ic_baseball_num_before" />
+
+    <Button
+        android:id="@+id/num_create_btn"
+        style="@style/BtnStyle"
+        android:layout_marginTop="30dp"
+        android:text="번호 생성" />
+
+    <Button
+        android:id="@+id/num_start_btn"
+        style="@style/BtnStyle"
+        android:layout_marginTop="10dp"
+        android:text="게임 시작"
+        android:visibility="invisible"/>
+
+
+    <!--android:visibility="gone" 안보이게 하는 속성-->
+</LinearLayout>

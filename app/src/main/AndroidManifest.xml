@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.baseballgame">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Victory"></activity>
+        <activity android:name=".Result" />
+        <activity android:name=".NumberInput" />
+        <activity android:name=".NumberCreation" />
+        <activity android:name=".Information"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".CheckResult" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+ <!--
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+                이게 있는 activity가 맨 처음 화면으로 지정됨
+                -->
+    <!--
+    android:parentActivityName=".MainActivity"
+    간단한 상하관계 설정. 쉽게 말해서 뒤로가기 같은 버튼이 생김
+    -->
