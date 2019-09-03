@@ -15,22 +15,18 @@ class NumberInput : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_number_input)
+        /*배열하나는 Char형 같다. ''이렇게 해줘야 함. java와 같이*/
+
+        //얘는 Int임
+        val computerNum=intent.getIntegerArrayListExtra("computerNum")
 
 
-
-        //input_text에 입력된 text값을 변수에 저장.
 
         input_result_btn.setOnClickListener {
-            var userNum=input_text.text.toString().toInt()
-            //toast("$userNum")
-
-            if(userNum>=500 && userNum<800){
-                startActivity<Result>(
-                    "userNum" to userNum.toString()//toString()을 안붙이면 안넘어감. String값..
-                )
-            }else{
-                startActivity<Victory>()
-            }
+            /*List로 저장*/
+            val userNum=input_text.text.toMutableList()
+            val firstNum=userNum[0] //자료형이 Char로 나옴
+            toast("$firstNum")
 
         }//clickEvent
 
