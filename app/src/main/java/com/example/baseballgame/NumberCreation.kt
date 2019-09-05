@@ -22,7 +22,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 class NumberCreation : AppCompatActivity() {
 
-    var computerNum= mutableListOf<Int>(0,0,0)
+    var computerNum= mutableListOf('0','0','0')
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,19 +51,21 @@ class NumberCreation : AppCompatActivity() {
     /*3자리 랜덤번호 발생 (0으로 시작X)*/
     fun makeNum() {
 
+
         val size = computerNum.size
         var a = 0
         while (a < size) {
 
-            computerNum[a] = Random().nextInt(10)
-            for (b in 0 until a) {
-                if (computerNum[a] === computerNum[b] || computerNum[0]==0) {
+            computerNum[a] = Random().nextInt(10).toChar()
+            /*for (b in 0 until a) {
+                if (computerNum[a] === computerNum[b] || computerNum[0]=='0') {
                     a--
                     break
                 }//if
             }//for
-            a++
+            a++*/
         }//while
+
 
 
     }//makeNum
