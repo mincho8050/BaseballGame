@@ -22,7 +22,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 class NumberCreation : AppCompatActivity() {
 
-    var computerNum= mutableListOf('0','0','0')
+    var computerNum = mutableListOf(0,0,0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,18 +56,26 @@ class NumberCreation : AppCompatActivity() {
         var a = 0
         while (a < size) {
 
-            computerNum[a] = Random().nextInt(10).toChar()
-            /*for (b in 0 until a) {
-                if (computerNum[a] === computerNum[b] || computerNum[0]=='0') {
+            computerNum[a] = Random().nextInt(10)
+
+            for (b in 0 until a) {
+                if (computerNum[a] === computerNum[b] || computerNum[0] == 0) {
                     a--
                     break
                 }//if
             }//for
-            a++*/
+            a++
         }//while
 
 
+        //computerNum[0]='R' > 적용됨
 
     }//makeNum
 
+
 }//
+
+
+
+
+
