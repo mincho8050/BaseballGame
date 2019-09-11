@@ -1,10 +1,15 @@
 package com.example.baseballgame
 
+import android.hardware.camera2.TotalCaptureResult
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_number_input.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+
+
 
 
 
@@ -15,7 +20,6 @@ class NumberInput : AppCompatActivity() {
     var computerList = mutableListOf("0","0","0")//랜덤번호
     var strike=0
     var ball=0
-    var out=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +30,7 @@ class NumberInput : AppCompatActivity() {
             inputNumber()
             changeNum()
             matchNum()
-            toast("strike: $strike / ball: $ball / out: $out")
+
         }//click
 
     }//onCreate
@@ -60,38 +64,39 @@ class NumberInput : AppCompatActivity() {
 
 
     fun matchNum(){
-        val it = computerList.iterator()
-        val it2 = userList.iterator()
 
 
-        while (it.hasNext()) {
-
-            val comnum = it.next()
-            val usernum = it2.next()
-
-            //strike가 체크가 안됨
-            if (comnum === usernum) {
-                strike++
-            } else {
-                if (userList.contains(comnum) === true) {
-                    ball++
-                } else {
-                    out++
-                }
+        for (a in 0..2) {
+            for (b in 0..2) {
+                if (computerList[a].equals(userList[b])) {
+                    if (a == b) {
+                        strike += 1
+                    } else {
+                        ball += 1
+                    }
+                }//if
             }
+        }//for
 
+        if (strike == 0 && ball == 0) {
+            //toast("아웃")
+            startActivity<Result>(
+                "result" to 0
+            )
+        } else if (strike == 3) {
+            //toast("정답")
+            startActivity<Victory>()
+        } else {
+            toast("strike:$strike ball:$ball")
+            startActivity<Result>(
+                "result" to 1
+            )
 
-            if (strike == 3 || ball == 3 || out == 3 ||
-                ball + strike == 3 || ball + out == 3 ||
-                strike + out == 3
-            ) {
-                break
-            }
-
-        }//while
-
+        }
+        //여기에 적어야 번호가 리셋됨
+        strike = 0
+        ball = 0
     }//matchNum
-
 
 
 
