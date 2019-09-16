@@ -40,14 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/input_layout">
-
-            <TextView
-                android:id="@+id/input_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
+            android:id="@+id/input_layout"/>
     </ScrollView>
 
 

@@ -18,4 +18,11 @@
         style="@style/FontStyle"
         android:layout_marginTop="70dp"
         tools:text="결과입력" />
+
+   <!-- <Button
+        android:id="@+id/result_btn"
+        android:layout_marginTop="40dp"
+        style="@style/BtnStyle"
+        android:text="다시 입력"
+        />-->
 </LinearLayout>

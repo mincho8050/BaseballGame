@@ -1,16 +1,21 @@
 package com.example.baseballgame
 
-import android.hardware.camera2.TotalCaptureResult
+
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_number_input.*
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
-
-
-
+import android.content.Context.INPUT_METHOD_SERVICE
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 
 
 class NumberInput : AppCompatActivity() {
@@ -20,34 +25,32 @@ class NumberInput : AppCompatActivity() {
     var computerList = mutableListOf("0","0","0")//랜덤번호
     var strike=0
     var ball=0
+    var count=1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_number_input)
 
         input_result_btn.setOnClickListener {
-
-            inputNumber()
-            changeNum()
             matchNum()
-
+            CloseKeyboard()
         }//click
+
+        CloseKeyboard()
 
     }//onCreate
 
-    //랜덤으로 생성된 번호를 받아와 다시 computerList에 담아준다. 자료형은 String
-    fun changeNum() {
+
+    fun matchNum(){
+
+        //랜덤으로 생성된 번호를 받아와 다시 computerList에 담아준다. 자료형은 String
         var computerNum=intent.getIntegerArrayListExtra("computerNum")
         //val num1=computerNum[0].toString()
         for(a in 0 until  computerList.size){
             computerList[a] = computerNum[a].toString()
         }
 
-    }//changeNum
-
-    //유저가 입력한 번호를 userList에 담아준다. String
-    fun inputNumber() {
-        //lastIndex : 문자열이 비어있는 경우 -1을 리턴 -> 이때 번호입력 메시지 띄우기
+        //유저가 입력한 번호를 userList에 담아준다. String
         userNum=input_text as EditText
         val user=userNum.text.toString()
 
@@ -58,46 +61,59 @@ class NumberInput : AppCompatActivity() {
                 userList[a] = user.substring(a,a+1)
             }//for
 
+            //번호매치
+            for (a in 0..2) {
+                for (b in 0..2) {
+                    if (computerList[a].equals(userList[b])) {
+                        if (a == b) {
+                            strike += 1
+                        } else {
+                            ball += 1
+                        }
+                    }//if
+                }
+            }//for
+
+            if (strike == 0 && ball == 0) {
+                //toast("아웃")
+                val textView=TextView(this)
+                textView.text="도전 ${count}회 : 입력번호 : $userList -> 3out"
+                input_layout.addView(textView,0)
+                count ++
+            } else if (strike == 3) {
+                //toast("정답")
+                startActivity<Victory>()
+            } else {
+                //toast("strike:$strike ball:$ball")
+                /*startActivity<Result>(
+                    //그냥 값을 보낼때 "strike" to strike
+                    //>받을때 잘 안받아지고 오류가 났음
+                    //>그래서 보낼때 "strike" to "$strike" 보냈더니 잘 받아짐
+                    "strike" to "$strike",
+                    "ball" to "$ball"
+                )*/
+                val textView=TextView(this)
+                textView.text="도전 ${count}회 : 입력번호 : $userList -> strike:$strike ball:$ball"
+                input_layout.addView(textView,0)
+                count ++
+            }
+            //여기에 적어야 번호가 리셋됨
+            strike = 0
+            ball = 0
         }//if
 
-    }//inputNumber
-
-
-    fun matchNum(){
-
-
-        for (a in 0..2) {
-            for (b in 0..2) {
-                if (computerList[a].equals(userList[b])) {
-                    if (a == b) {
-                        strike += 1
-                    } else {
-                        ball += 1
-                    }
-                }//if
-            }
-        }//for
-
-        if (strike == 0 && ball == 0) {
-            //toast("아웃")
-            startActivity<Result>(
-                "result" to 0
-            )
-        } else if (strike == 3) {
-            //toast("정답")
-            startActivity<Victory>()
-        } else {
-            toast("strike:$strike ball:$ball")
-            startActivity<Result>(
-                "result" to 1
-            )
-
-        }
-        //여기에 적어야 번호가 리셋됨
-        strike = 0
-        ball = 0
     }//matchNum
 
+    //키보드가 내려가는 함수,
+    //>버튼을 클릭해야 발동. 그냥 화면에 대고 하면 안됨
+    fun CloseKeyboard() {
+        var view = this.currentFocus
+
+        if(view != null) {
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 
 
 }//

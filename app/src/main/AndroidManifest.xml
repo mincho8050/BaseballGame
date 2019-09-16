@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Victory"></activity>
-        <activity android:name=".Result" />
-        <activity android:name=".NumberInput" />
+        <activity android:name=".Result"
+                    android:parentActivityName=".NumberInput"/>
+        <activity android:name=".NumberInput"/>
         <activity android:name=".NumberCreation" />
         <activity android:name=".Information"
             android:parentActivityName=".MainActivity"/>
