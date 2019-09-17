@@ -9,13 +9,9 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_number_input.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
-import android.content.Context.INPUT_METHOD_SERVICE
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.EditorInfo
+import android.view.KeyEvent
 
 
 class NumberInput : AppCompatActivity() {
@@ -35,8 +31,23 @@ class NumberInput : AppCompatActivity() {
             matchNum()
             CloseKeyboard()
         }//click
-
-        CloseKeyboard()
+    /*
+    * EditText 키보드 옵션
+    * actionGo -> '이동'의 의미(웹브라우저)
+    * actionSearch -> '검색'의 의미(네이버 검색창)
+    * actionSend -> '보내기'의 의미(메시지 작성시 사용)
+    * actionNext -> '다음'의 의미(회원가입시 다음 필드로 이동)
+    * actionDone -> '완료'의 의미(정보 입력창)
+    * */
+        input_text.setOnEditorActionListener { v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_NEXT){
+                //키보드에서 완료버튼을 누르면 번호매치 및 키보드 내린다.
+                matchNum()
+                CloseKeyboard()
+                return@setOnEditorActionListener true
+            }
+            false
+        }
 
     }//onCreate
 
@@ -82,7 +93,9 @@ class NumberInput : AppCompatActivity() {
                 count ++
             } else if (strike == 3) {
                 //toast("정답")
-                startActivity<Victory>()
+                startActivity<Victory>(
+                    "count" to "$count"
+                )
             } else {
                 //toast("strike:$strike ball:$ball")
                 /*startActivity<Result>(

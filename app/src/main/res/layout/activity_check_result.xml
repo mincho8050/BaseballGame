@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/check_image"
-        style="@style/ImageStyle"
+
         android:layout_marginTop="140dp"
         app:srcCompat="@drawable/ic_baseball_check_result" />
 
     <TextView
         android:id="@+id/check_title"
-        style="@style/FontStyle"
+
         android:layout_marginTop="20dp"
         android:text="예측 내역" />
 </LinearLayout>
