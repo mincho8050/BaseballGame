@@ -1,5 +1,5 @@
 <resources>
-
+<!-- 일정 버전부터 Theme Editor가 없어진듯 하다. Resource Manager를 이용한다-->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
