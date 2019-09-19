@@ -25,10 +25,16 @@ class Victory : AppCompatActivity() {
 
         victory_main_btn.setOnClickListener {
             startActivity<MainActivity>()
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         }
 
 
-
-
     }//onCreate
-}
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity<MainActivity>()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+    }//
+
+}//

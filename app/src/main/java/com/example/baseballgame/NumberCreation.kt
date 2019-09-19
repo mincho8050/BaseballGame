@@ -40,8 +40,9 @@ class NumberCreation : AppCompatActivity() {
             startActivity<NumberInput>(
                 "computerNum" to computerNum
             )
+            //애니메이션
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         }
-
     }//onCreate
 
     /*
@@ -72,6 +73,11 @@ class NumberCreation : AppCompatActivity() {
 
     }//makeNum
 
+    //뒤로가기 버튼
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+    }
 
 }//
 

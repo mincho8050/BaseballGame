@@ -30,6 +30,7 @@ class NumberInput : AppCompatActivity() {
         input_result_btn.setOnClickListener {
             matchNum()
             CloseKeyboard()
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         }//click
     /*
     * EditText 키보드 옵션
@@ -44,6 +45,7 @@ class NumberInput : AppCompatActivity() {
                 //키보드에서 완료버튼을 누르면 번호매치 및 키보드 내린다.
                 matchNum()
                 CloseKeyboard()
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
                 return@setOnEditorActionListener true
             }
             false
@@ -128,5 +130,9 @@ class NumberInput : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+    }
 
 }//
