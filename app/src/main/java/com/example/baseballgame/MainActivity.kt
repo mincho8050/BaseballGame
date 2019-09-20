@@ -59,7 +59,9 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
 
         if(System.currentTimeMillis() - lastTimeBackPressed < 1500){
-            finish()
+            //finish()
+            //액티비티 한번에 종료
+            ActivityCompat.finishAffinity(this)
             return
         }else{
             lastTimeBackPressed = System.currentTimeMillis()

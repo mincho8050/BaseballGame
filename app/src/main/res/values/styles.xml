@@ -2,7 +2,10 @@
 <!-- 일정 버전부터 Theme Editor가 없어진듯 하다. Resource Manager를 이용한다-->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--상단바 안보이게 하는 방법-->
+        <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
+        <!--이색은 안보임-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -28,6 +31,7 @@
         <item name="android:fontFamily">@font/bmjua</item>
         <item name="android:layout_width">115dp</item>
         <item name="android:layout_height">55dp</item>
+        <item name="android:background">@drawable/btn_background</item>
     </style>
 
 
